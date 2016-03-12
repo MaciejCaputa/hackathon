@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <script   src="https://code.jquery.com/jquery-2.2.1.js"   integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc="   crossorigin="anonymous"></script>
+    <script  src="https://code.jquery.com/jquery-2.2.1.js"   integrity="sha256-eNcUzO3jsv0XlJLveFEkbB8bA7/CroNpNVk3XpmnwHc="   crossorigin="anonymous"></script>
+    <script src="elo1.js"></script>
     <style>
         .custom-icon {
             font-size: 36px;
@@ -29,16 +30,11 @@
         <div flex-xs flex-gt-xs="75" layout="column">
             <md-card>
 
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">Task {{multiplication.questionNumber}}</span>
-                    </md-card-title-text>
-                </md-card-title>
                 <md-card-content>
+                    <strong>Task {{questionNumber}}</strong>
                     <p ng-bind="multiplication.question()"></p>
 
                     <p>
-                        {{data}}
                         <md-radio-group ng-model="data" layout="row">
                             <md-radio-button flex-xs flex-gt-xs="25" ng-disabled="disableAnswers" value="{{multiplication.answers[0]}}" class="md-primary">
                                 A. {{multiplication.answers[0]}}

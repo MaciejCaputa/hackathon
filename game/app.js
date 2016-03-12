@@ -25,7 +25,7 @@
                 if ($scope.data == $scope.multiplication.correctAnswer()) {
                     $scope.isCorrect = true;
                     $scope.numberOfCorrectAnswers++;
-                    $scope.score += 10;
+                    $scope.score = CalculateLevel(6, $scope.score, 1800)
                 }
                 else {
                     $scope.isWrong = true;
@@ -42,7 +42,7 @@
 
 
 
-                $scope.submit = function () {
+            $scope.submit = function () {
 
                 $scope.showSolution = true;
 
