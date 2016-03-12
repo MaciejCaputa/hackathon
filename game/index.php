@@ -13,7 +13,7 @@
 
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <span class="md-flex">Flickr Search</span>
+            <span class="md-flex">MathHack</span>
         </div>
     </md-toolbar>
 
@@ -33,7 +33,7 @@
 
             </form>
 
-              <md-card ng-repeat="picture in results.photos.photo">
+              <md-card>
                 <img ng-src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_b.jpg" alt="" class="md-card-image">
                 <span class="md-headline">{{picture.title}}</span>
 
