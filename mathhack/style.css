@@ -1,0 +1,101 @@
+body {
+    background-image: url(background.jpg);
+    background-repeat: no-repeat
+}
+.mathhack-nav-left, .navbar-right {
+    margin-top: 1%;
+    text-align: center;
+}
+
+.nav-container {
+    padding-left: 0px;
+}
+
+.mathhack-nav-left{
+    width: 50%;
+}
+
+.mathhack-nav-left li a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding: 0px;
+}
+
+.blue-li:hover {
+    background-color: #ebdfed;
+}
+
+.purple-li:hover, .chooseGbtn:hover {
+    background-color: #d2d1e8;
+}
+
+.mathhack-nav-left li {
+    width: 25%;
+}
+
+.navbar-right button {
+    margin-left: 10px;
+    border: 1px solid purple;
+}
+
+.navbar-right button:hover {
+    background-color: #d6c3e0;
+}
+
+.modal-header, .modal-footer {
+    background: #b2b2ff;
+}
+
+.multi-ans {
+    margin-left: 5px;
+}
+
+.modal-body {
+    background: #e5e5ff;
+}
+
+.logo-login {
+    margin-left: 39%;
+    margin-top: 10%;
+}
+
+.logo-signup {
+    margin-left: 36%;
+    margin-top: 10%;
+}
+
+.login-form {
+    margin-left: 20%;
+}
+
+.login-form input {
+    margin-top: 1.5%;
+}
+
+.login-form .login-btn {
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
+.login-form .signup-btn {
+    margin-top: 5%;
+    margin-left: 33%;
+}
+
+.login-form .sign-btn {
+    margin-top: 5%;
+    margin-left: 28%;
+}
+
+.chooseGbtn {
+    border: 1px solid purple;
+    margin-left: 15%;
+}
+
+.optradio {
+    margin-left: 5%;
+}
+
+.div-modal-radio {
+    width:100%;
+}

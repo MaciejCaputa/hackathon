@@ -2,22 +2,22 @@ var generateNumber = function(a,b) {
     return Math.floor((Math.random() * (b - a + 1)) + a);
 };
 
-class LinearFunction {
+class Task {
     constructor(lowerBound, upperBound) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
         this.a = generateNumber(this.lowerBound,this.upperBound);
         this.b = generateNumber(this.lowerBound,this.upperBound);
         this.answers = [];
-        this.correctAnswer = "\\(" + String(this.a * this.b) + "\\)";
-        this.question = "Evaluate \\[" + String(this.a) + " \\cdot " + String(this.b) + "\\]";
+        this.correctAnswer = "\\(-\\frac{" + String(this.b) + "}{" + String(this.a) + "}\\)";
+        this.question = "Find the zero of \\[f(x) = " + String(this.a) + "x + " + String(this.b) + "\\]";
         this.solution = "\\[" + String(this.a) + " \\cdot " + String(this.b) + " = " + String(this.a * this.b) + "\\]";
 
         var whichIsCorrect = Math.floor(Math.random() * 4);
 
         for (i = 0; i < 4; i++) {
             if (i == whichIsCorrect) {
-                this.answers.push("\\(" + String(this.a * this.b) + "\\)");
+                this.answers.push(this.correctAnswer);
             } else {
 
                 var found;
@@ -25,20 +25,19 @@ class LinearFunction {
                 do {
                     found = false;
 
-                    var randomNumber = generateNumber(lowerBound,upperBound) * generateNumber(this.lowerBound,this.upperBound);
-
+                    var randomAnswer = "\\(\\frac{" + String(generateNumber(lowerBound,upperBound)) + "}{" + String(generateNumber(lowerBound,upperBound)) + "}\\)";
                     for (var i = 0; i < this.answers.length; i++) {
-                        if (this.answers[i] == randomNumber) {
+                        if (this.answers[i] == randomAnswer) {
                             found = true;
                             break;
                         }
                     }
 
-                    if (randomNumber == this.a * this.b) {
+                    if (randomAnswer == this.correctAnswer) {
                         found = true;
                     }
 
-                    if (!found) this.answers.push("\\(" + String(randomNumber) + "\\)");
+                    if (!found) this.answers.push(randomAnswer);
 
                 } while (found);
 

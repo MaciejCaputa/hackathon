@@ -2,7 +2,7 @@ var generateNumber = function(a,b) {
     return Math.floor((Math.random() * (b - a + 1)) + a);
 };
 
-class Multiplication {
+class Task {
     constructor(lowerBound, upperBound) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
