@@ -1,9 +1,5 @@
 var generateNumber = function(a,b) {
-    var random = Math.random() * (b - a + 1) + a;
-    if (0 <= random && random < 1 )
-        return Math.ceil(random);
-    else
-        return Math.floor(random);
+    return Math.floor((Math.random() * (b - a + 1)) + a);
 };
 
 class Task {
@@ -12,9 +8,10 @@ class Task {
         this.upperBound = upperBound;
         this.a = generateNumber(this.lowerBound,this.upperBound);
         this.b = generateNumber(this.lowerBound,this.upperBound);
+        this.c = generateNumber(this.lowerBound,this.upperBound);
         this.answers = [];
-        this.correctAnswer = "\\(-\\frac{" + String(this.b) + "}{" + String(this.a) + "}\\)";
-        this.question = "Find the zero of \\[f(x) = " + String(this.a) + "x + " + String(this.b) + "\\]";
+        this.correctAnswer = "\\(" + String(this.b * this.b - 4 * this.a * this.b) + "\\)";
+        this.question = "Compute delta discriminant for the following quadratic function \\[f(x) = " + String(this.a) + "x^2 + " + String(this.b) + "x + " + String(this.c) + "\\]";
         this.solution = "\\[" + String(this.a) + " \\cdot " + String(this.b) + " = " + String(this.a * this.b) + "\\]";
 
         var whichIsCorrect = Math.floor(Math.random() * 4);
@@ -29,19 +26,20 @@ class Task {
                 do {
                     found = false;
 
-                    var randomAnswer = "\\(\\frac{" + String(generateNumber(lowerBound,upperBound)) + "}{" + String(generateNumber(lowerBound,upperBound)) + "}\\)";
+                    var randomNumber = generateNumber(this.lowerBound,this.upperBound) * generateNumber(this.lowerBound,this.upperBound) - 4 * generateNumber(this.lowerBound,this.upperBound) * generateNumber(this.lowerBound,this.upperBound);
+
                     for (var i = 0; i < this.answers.length; i++) {
-                        if (this.answers[i] == randomAnswer) {
+                        if (this.answers[i] == randomNumber) {
                             found = true;
                             break;
                         }
                     }
 
-                    if (randomAnswer == this.correctAnswer) {
+                    if (randomNumber == this.a * this.b) {
                         found = true;
                     }
 
-                    if (!found) this.answers.push(randomAnswer);
+                    if (!found) this.answers.push("\\(" + String(randomNumber) + "\\)");
 
                 } while (found);
 

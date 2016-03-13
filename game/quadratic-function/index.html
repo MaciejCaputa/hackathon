@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MathHack</title>
+    <link rel="stylesheet" href="../../lessons/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic">
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="../elo1.js"></script>
+    <script src="task.js"></script>
+    <style>
+        .custom-icon {
+            font-size: 36px;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../stopwatch/stopwatch.js"></script>
+
+</head>
+<body ng-cloak ng-app="MathHack">
+
+<div class="mathdiv" ng-controller="GameCtrl" ng-cloak>
+    <md-content class="md-padding" layout="row">
+
+        <div flex-xs flex-gt-xs="75" layout="column">
+            <md-card>
+
+                <md-card-content>
+                    <strong>Task {{questionNumber}}</strong>
+                    <p ng-bind="task.question"></p>
+
+                    <p>
+                        <md-radio-group ng-model="data" layout="row">
+                            <md-radio-button flex-xs flex-gt-xs="25" ng-disabled="checked" value="{{task.answers[0]}}" class="md-primary">
+                                A. <span ng-bind="task.answers[0]"></span>
+                            </md-radio-button>
+                            <md-radio-button flex-xs flex-gt-xs="25" ng-disabled="checked" value="{{task.answers[1]}}" class="md-primary">
+                                B. <span ng-bind="task.answers[1]"></span>
+                            </md-radio-button>
+                            <md-radio-button flex-xs flex-gt-xs="25" ng-disabled="checked" value="{{task.answers[2]}}" class="md-primary">
+                                C. <span ng-bind="task.answers[2]"></span>
+                            </md-radio-button>
+                            <md-radio-button flex-xs flex-gt-xs="25" ng-disabled="checked" value="{{task.answers[3]}}" class="md-primary">
+                                D. <span ng-bind="task.answers[3]"></span>
+                            </md-radio-button>
+                        </md-radio-group>
+
+                    </p>
+
+                    <div ng-show="isCorrect" class="correct">
+                        <img src="../img/tick.png" alt=""><br />
+                        <span class="md-headline">Correct!</span>
+                    </div>
+                    <div ng-show="isWrong" class="wrong">
+                        <img src="../img/cross.png" alt=""><br />
+                        <span class="md-headline">Wrong!</span>
+                    </div>
+
+                </md-card-content>
+
+                <md-card-actions layout="row" layout-align="start center">
+                    <md-card-icon-actions>
+
+                        <md-button class="md-icon-button" aria-label="like">
+                            <i class="icon ion-thumbsup custom-icon"></i>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="dislike">
+                            <i class="icon ion-thumbsdown custom-icon"></i>
+                        </md-button>
+                    </md-card-icon-actions>
+                    <md-button>#multiplication</md-button>
+                    <md-button>Easy/Medium/Hard</md-button>
+                </md-card-actions>
+
+            </md-card>
+            <md-button ng-click="check();" ng-disabled="checked"class="md-raised md-primary">Check</md-button>
+            <md-button ng-click="nextQuestion();" ng-disabled="!checked" class="md-raised md-primary">Next Question</md-button>
+        </div>
+
+        <div flex-xs flex-gt-xs="25" layout="column">
+            <md-card>
+
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="md-headline">{{score}}</span>
+                        <span class="md-subhead">Score</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-divider></md-divider>
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="md-headline">{{questionNumber-1}}</span>
+                        <span class="md-subhead">Questions Attempted</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-divider></md-divider>
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="md-headline">{{numberOfCorrectAnswers}}</span>
+                        <span class="md-subhead">Correct Answers</span>
+                    </md-card-title-text>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <span class="md-headline">{{numberOfWrongtAnswers}}</span>
+                        <span class="md-subhead">Incorrect Answers</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-divider></md-divider>
+                <md-card-title>
+                    <md-card-title-text layout="column" layout-align="center center">
+                        <h1><time>00:00:00</time></h1>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
+
+    </md-content>
+
+    <md-content class="md-padding" layout="row">
+        <div flex-xs flex-gt-xs="75" layout="column">
+
+            <md-card ng-show="checked">
+                <md-card-title>
+                    <md-card-title-text>
+                        <strong>Solution for Task {{questionNumber}}</strong>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p ng-bind="task.solution"></p>
+                </md-card-content>
+            </md-card>
+
+        </div>
+    </md-content>
+
+</div>
+
+
+    <script src="../../lessons/bower_components/angular/angular.min.js"></script>
+    <script src="../../lessons/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../../lessons/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../lessons/bower_components/hammerjs/hammer.min.js"></script>
+    <script src="../../lessons/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="app.js"></script>
+
+
+</body>
+</html>
